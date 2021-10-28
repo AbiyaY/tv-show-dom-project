@@ -1,3 +1,44 @@
 #root {
-  color: red;
+  color: black;
+  background-color: rgba(236, 234, 234, 0.781);
+}
+
+#divCard {
+  display: flex;
+  flex-direction: column;
+  border: 0.5px solid white;
+  border-radius: 5px;
+  width: 25%;
+  height: 500px;
+  margin: 15px;
+  background-color: white;
+}
+#div-container {
+  display: flex;
+  flex-direction: row;
+  /* border: 5px solid red; */
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-content: space-around;
+
+  align-items: center;
+}
+
+#divTitle {
+  border: 0.5px solid black;
+  text-align: center;
+  border-radius: 5px;
+}
+
+#divImg {
+  text-align: center;
+  padding: 10px;
+  margin: 10px;
+  width: 80%;
+}
+
+#divSummary {
+  text-align: justify;
+  margin-right: 1.5em;
+  margin-left: 1.5em;
 }
