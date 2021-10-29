@@ -3,10 +3,19 @@
   background-color: rgba(236, 234, 234, 0.781);
 }
 
+#search {
+  padding: 20px 20px;
+  margin: 35px 90px;
+  border-radius: 5px;
+  font-size: large;
+  width: 25%;
+  height: 40px;
+}
+
 #divCard {
   display: flex;
   flex-direction: column;
-  border: 0.5px solid white;
+  border: 2px solid rgba(255, 255, 255, 0.897);
   border-radius: 5px;
   width: 25%;
   height: 500px;
@@ -16,29 +25,33 @@
 #div-container {
   display: flex;
   flex-direction: row;
-  /* border: 5px solid red; */
   flex-wrap: wrap;
   justify-content: space-evenly;
   align-content: space-around;
-
   align-items: center;
 }
 
 #divTitle {
+  display: flex;
+  justify-content: center;
   border: 0.5px solid black;
   text-align: center;
   border-radius: 5px;
 }
 
 #divImg {
-  text-align: center;
-  padding: 10px;
+  display: flex;
+  justify-content: center;
+  /* text-align: center; */
+  padding-top: 10px;
   margin: 10px;
   width: 80%;
 }
 
 #divSummary {
+  display: flex;
   text-align: justify;
   margin-right: 1.5em;
   margin-left: 1.5em;
+  font-size: 18px;
 }

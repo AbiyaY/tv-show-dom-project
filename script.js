@@ -1,11 +1,30 @@
 //You can edit ALL of the code here
+const allEpisodes = getAllEpisodes();
 const rootElem = document.getElementById("root");
+
+const divSearchElem = document.createElement("div");
+divSearchElem.setAttribute("id", "divSearch");
+rootElem.appendChild(divSearchElem);
+const searchElem = document.createElement("input");
+searchElem.setAttribute("id", "search");
+searchElem.setAttribute("type", "search");
+searchElem.setAttribute("name", "search");
+searchElem.setAttribute("placeholder", "Search");
+divSearchElem.appendChild(searchElem);
+
+// const buttonElem = document.createElement("button");
+// buttonElem.setAttribute("class", "search");
+// buttonElem.innerHTML = "Search";
+// rootElem.appendChild(buttonElem);
+
 const divContainerElem = document.createElement("div");
 divContainerElem.id = "div-container";
 rootElem.appendChild(divContainerElem);
 
+
+
 function setup() {
-  const allEpisodes = getAllEpisodes();
+  
   makePageForEpisodes(allEpisodes);
 }
 
@@ -48,6 +67,15 @@ function makePageForEpisodes(episodeList) {
   });
  
   console.log(episodeList);
+
+  searchElem.addEventListener("keyup", e => {
+    const searchItem = e.target.value.toLowerCase();
+    const searchFilter = allEpisodes.filter(episodes => {
+      return episodes.name.toLowerCase().includes(searchItem) || episodes.summary.toLowerCase().includes(searchItem);
+    });
+    console.log(searchFilter);
+   makePageForEpisodes(searchFilter);
+  });
 
   //rootElem.innerHTML = `Got ${episodeList.name} episode(s)`;
 }
