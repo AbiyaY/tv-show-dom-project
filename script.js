@@ -68,12 +68,13 @@ function makePageForEpisodes(episodeList) {
  
   console.log(episodeList);
 
-  searchElem.addEventListener("keyup", e => {
+  searchElem.addEventListener("keypress", e => {
     const searchItem = e.target.value.toLowerCase();
     const searchFilter = allEpisodes.filter(episodes => {
       return episodes.name.toLowerCase().includes(searchItem) || episodes.summary.toLowerCase().includes(searchItem);
     });
     console.log(searchFilter);
+    divContainerElem.innerHTML = "";
    makePageForEpisodes(searchFilter);
   });
 
