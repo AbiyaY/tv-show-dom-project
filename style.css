@@ -22,6 +22,17 @@
   height: 40px;
 }
 
+#display {
+  /* padding: 20px 20px; */
+  margin: 45px 90px;
+  /* margin-bottom: auto; */
+  margin-top: auto;
+  border-radius: 5px;
+  /* font-size: large; */
+  /* width: 25%; */
+  /* height: 40px; */
+}
+
 #divCard {
   display: flex;
   flex-direction: column;
