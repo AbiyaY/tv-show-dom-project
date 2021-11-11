@@ -1,3 +1,88 @@
 #root {
-  color: red;
+  color: black;
+  background-color: rgba(236, 234, 234, 0.781);
+}
+
+/* #showSelect {
+  padding: 20px 20px;
+  margin: 45px 90px;
+  /* margin-bottom: auto; */
+/* border-radius: 5px;
+  font-weight: 400;
+  font-size: 25px;
+  width: 25%;
+  height: 40px;
+}
+
+#select {
+  padding: 20px 20px;
+  margin: 45px 90px;
+  /* margin-bottom: auto; */
+/* border-radius: 5px;
+  font-size: large;
+  width: 25%;
+  height: 40px;
+} */
+#search {
+  padding: 20px 20px;
+  /* margin: 35px 630px; */
+  border-radius: 5px;
+  font-size: large;
+  width: 25%;
+  height: 40px;
+}
+
+#display {
+  /* padding: 20px 20px; */
+  margin: 45px 90px;
+  /* margin-bottom: auto; */
+  margin-top: auto;
+  border-radius: 5px;
+  /* font-size: large; */
+  /* width: 25%; */
+  /* height: 40px; */
+}
+
+#divCard {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid rgba(255, 255, 255, 0.897);
+  border-radius: 5px;
+  width: 25%;
+  height: 500px;
+  margin: 15px;
+  background-color: white;
+}
+#div-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-content: space-around;
+  align-items: center;
+}
+
+#divTitle {
+  display: flex;
+  justify-content: center;
+  border: 0.5px solid black;
+  text-align: center;
+  border-radius: 5px;
+}
+
+#divImg {
+  display: flex;
+  justify-content: center;
+  /* text-align: center; */
+  padding-top: 10px;
+  margin: 10px;
+  width: 80%;
+}
+
+#divSummary {
+  display: flex;
+  text-align: justify;
+  margin-right: 1.5em;
+  margin-left: 1.5em;
+  font-size: 18px;
 }
