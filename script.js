@@ -1,9 +1,6 @@
 //You can edit ALL of the code here
 //const allEpisodes = getAllEpisodes();
 // const allShows = getAllShows();
-// arr.sort(function(a, b) {
-//     return a === b ? 0 : a < b ? -1 : 1;
-//   });
 const rootElem = document.getElementById("root");
 const searchWrapEl = document.getElementById("search-wrap");
 
