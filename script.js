@@ -1,25 +1,41 @@
 //You can edit ALL of the code here
 //const allEpisodes = getAllEpisodes();
+const allShows = getAllShows();
 const rootElem = document.getElementById("root");
+const searchWrapEl = document.getElementById("search-wrap");
 
-const divSelectElem = document.createElement("div");
-rootElem.appendChild(divSelectElem);
+const showSelectElem = document.createElement("select");
+// const showSelectElem = document.createElement("select");
+// showSelectElem.setAttribute("id", "showSelect");
+// const showOptionEl = document.createElement("option");
+// showOptionEl.innerHTML = "Show";
+// showSelectElem.appendChild(showOptionEl);
+// searchWrapEl.appendChild(showSelectElem);
+
+
+// const divSelectElem = document.createElement("div");
+// rootElem.appendChild(divSelectElem);
+
 const selectElem = document.createElement("select");
 selectElem.setAttribute("id", "select");
+const optionElem = document.createElement("option");
+optionElem.innerHTML = "Episodes";
+//selectElem.appendChild(optionElem);
+
 //selectElem.setAttribute("placeholder", "Search");
-divSelectElem.appendChild(selectElem);
+searchWrapEl.appendChild(selectElem);
 //const optionElem = document.createElement("option");
 //selectElem.appendChild(optionElem);
 
-const divSearchElem = document.createElement("div");
-divSearchElem.setAttribute("id", "divSearch");
-rootElem.appendChild(divSearchElem);
+//const divSearchElem = document.createElement("div");
+//divSearchElem.setAttribute("id", "divSearch");
+//rootElem.appendChild(divSearchElem);
 const searchElem = document.createElement("input");
 searchElem.setAttribute("id", "search");
 searchElem.setAttribute("type", "search");
 searchElem.setAttribute("name", "search");
 searchElem.setAttribute("placeholder", "Search");
-divSearchElem.appendChild(searchElem);
+searchWrapEl.appendChild(searchElem);
 
 const divDisplay = document.createElement("div");
 divDisplay.setAttribute("id", "display");
@@ -40,10 +56,8 @@ const h4El = document.createElement("h4");
  
   divDisplay.appendChild(h4El);
 
-
-
-function setup() {  
-  let allEpisodes = fetch("https://api.tvmaze.com/shows/82/episodes")
+function getFetch(showId) {
+  let allEpisodes = fetch(`https://api.tvmaze.com/shows/${showId}/episodes`)
     .then(response => response.json())
     .then(data => {
         allEpisodes = data;
@@ -53,8 +67,41 @@ function setup() {
         searchEpisodes(allEpisodes);
     })
     .catch(err => console.log(err));
+}
+
+function setup() {  
+  // let allEpisodes = fetch("https://api.tvmaze.com/shows/82/episodes")
+  //   .then(response => response.json())
+  //   .then(data => {
+  //       allEpisodes = data;
+  //       console.log(data);
+  //       makePageForEpisodes(allEpisodes);
+  //       selectEpisodes(allEpisodes);
+  //       searchEpisodes(allEpisodes);
+  //   })
+  //   .catch(err => console.log(err));
     //makePageForEpisodes(allEpisodes);
+    let defaultId = 82;
+    getFetch(defaultId);
+    makePageForShows(allShows);
     
+}
+
+function makePageForShows(showList){
+    //const showSelectElem = document.createElement("select");
+    showSelectElem.setAttribute("id", "showSelect");
+    const showOptionEl = document.createElement("option");
+    showOptionEl.innerHTML = "Show";
+    showSelectElem.appendChild(showOptionEl);
+    searchWrapEl.appendChild(showSelectElem);
+
+    showList.forEach(show => {
+        const optionEl = document.createElement("option");
+        optionEl.innerHTML = show.name;
+        optionEl.setAttribute("value", show.id);
+        showSelectElem.appendChild(optionEl);
+        console.log(show);
+    });
     
 }
 
@@ -66,15 +113,19 @@ function makePageForEpisodes(episodeList) {
   episodeList.forEach(episode => {
 
     const optionElem = document.createElement("option");
-    optionElem.setAttribute("value", `${episode.name}`);
+    
+
+    
+    //optionElem.setAttribute("value", `${episode.name}`);
+    
     selectElem.appendChild(optionElem);
+    
 
     if(episode.number < 10){
       optionElem.setAttribute("value", `${episode.name}`);
       optionElem.innerText = `S0${episode.season}E0${episode.number} - ${episode.name}`;
     } else {
-       //optionElem.setAttribute("value", `${episode.name}`);
-       optionElem.innerText = `S0${episode.season}E${episode.number} - ${episode.name}`;
+        optionElem.innerText = `S0${episode.season}E${episode.number} - ${episode.name}`;        
     }
 
     const divCardElem = document.createElement("div");
@@ -132,6 +183,14 @@ function makePageForEpisodes(episodeList) {
 
 }
 
+showSelectElem.addEventListener("change", (e) => {
+  let showSelctId = e.target.value;
+  console.log(showSelctId);
+  divContainerElem.innerHTML = "";
+  selectElem.innerText="";
+  getFetch(showSelctId);
+});
+
 function selectEpisodes(episodeList) {
 
     selectElem.addEventListener("click", (e) => {
@@ -140,7 +199,7 @@ function selectEpisodes(episodeList) {
     let selectFilter = episodeList.filter(episode => {
       return episode.name === selectItem;
     });
-    console.log(selectFilter);
+    //console.log(selectFilter);
      divContainerElem.innerHTML = "";
   makePageForEpisodes(selectFilter);
   console.log(selectFilter);
