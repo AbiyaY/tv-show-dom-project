@@ -1,6 +1,9 @@
 //You can edit ALL of the code here
 //const allEpisodes = getAllEpisodes();
-const allShows = getAllShows();
+// const allShows = getAllShows();
+// arr.sort(function(a, b) {
+//     return a === b ? 0 : a < b ? -1 : 1;
+//   });
 const rootElem = document.getElementById("root");
 const searchWrapEl = document.getElementById("search-wrap");
 
@@ -43,9 +46,14 @@ divDisplay.appendChild(h4El);
 
 
 function setup() {  
+  const allShows = getAllShows();
+  //To sort the shows in alphabetical order
+  let sortedArr = allShows.sort(function(a, b) {
+    return a.name === b.name ? 0 : a.name < b.name ? -1 : 1;
+  });
   let defaultId = 82;
   getFetch(defaultId);
-  makePageForShows(allShows);    
+  makePageForShows(sortedArr);    
 }
 
 //Fetching API
@@ -138,7 +146,7 @@ showSelectElem.addEventListener("change", (e) => {
 
 //Event Handler for Select Episodes
 function selectEpisodes(episodeList) {
-  selectElem.addEventListener("click", (e) => {    
+  selectElem.addEventListener("change", (e) => {    
     let selectItem = e.target.value;
     let selectFilter = episodeList.filter(episode => {
       return episode.name === selectItem;
